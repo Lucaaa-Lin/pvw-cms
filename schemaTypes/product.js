@@ -6,10 +6,10 @@ export default {
     { name: 'name', type: 'string' },
     { name: 'brand', title: 'Brand', type: 'string',
         options: {
-            list: ['Ball','Burberry','Bulova','Bvlgari','Cartier','Casio','Citizen',
-            'Corum','Cyma','Ebel','Elgin','Eterna','Fendi','Gucci','Hamilton',
-            'Hermès','Heuer','IWC','Jaeger-LeCoultre','Junghans','KUOE','Longines','Omega',
-            'Piaget','Rado','Revue Thommen','Rolex','Seiko','Sinn','Tissot','Tudor',
+            list: ['Ball','Bedat & Co','Burberry','Bulova','Bvlgari','Cartier','Casio','Christian Dior','Citizen',
+            'Corum','Cyma','Ebel','Elgin','Eterna','Fendi','Frederique Constant','Gucci','Hamilton',
+            'Hermès','Heuer','IWC','Jaeger-LeCoultre','Junghans','KUOE','Longines','Mondaine','Omega',
+            'Piaget','Rado','Revue Thommen','Rolex','Seiko','Sinn','Tag Heuer','Tissot','Tudor',
             'Ulysse Nardin','Van Cleef','Waltham','Other',
             ],
         },
@@ -27,7 +27,7 @@ export default {
       title: 'Product Images',
       type: 'array',
       of: [{ type: 'image' }],
-      validation: (Rule) => Rule.max(12),
+      validation: (Rule) => Rule.max(30),
     },
 
     {
@@ -72,4 +72,17 @@ export default {
       type: 'text',
     },
   ],
+  preview: {
+    select: {
+      brand: 'brand',
+      name: 'name',
+      media: 'images.0',
+    },
+    prepare({ brand, name, media }) {
+      return {
+        title: brand && name ? `${brand} - ${name}` : name || 'Untitled',
+        media,
+      }
+    },
+  },
 }
