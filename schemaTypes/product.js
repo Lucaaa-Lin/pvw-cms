@@ -20,14 +20,10 @@ export default {
       type: 'slug',
       options: { source: 'name' },
     },
-
-    // ⭐ 多图（重点）
+    
     {
-      name: 'images',
-      title: 'Product Images',
-      type: 'array',
-      of: [{ type: 'image' }],
-      validation: (Rule) => Rule.max(30),
+      name: 'description',
+      type: 'text',
     },
 
     {
@@ -67,9 +63,13 @@ export default {
       initialValue: 'available',
     },
 
+    // ⭐ 多图（重点）
     {
-      name: 'description',
-      type: 'text',
+      name: 'images',
+      title: 'Product Images',
+      type: 'array',
+      of: [{ type: 'image' }],
+      validation: (Rule) => Rule.max(30),
     },
   ],
   preview: {
