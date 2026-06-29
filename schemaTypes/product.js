@@ -3,24 +3,64 @@ export default {
   title: 'Product',
   type: 'document',
   fields: [
-    { name: 'name', type: 'string' },
-    { name: 'brand', title: 'Brand', type: 'string',
-        options: {
-            list: ['Ball','Bedat & Co','Burberry','Bulova','Bvlgari','Cartier','Casio','Christian Dior','Citizen',
-            'Corum','Cyma','Ebel','Elgin','Eterna','Fendi','Frederique Constant','Gucci','Hamilton',
-            'Hermès','Heuer','IWC','Jaeger-LeCoultre','Junghans','KUOE','Longines','Mondaine','Omega',
-            'Piaget','Rado','Revue Thommen','Rolex','Seiko','Sinn','Tag Heuer','Tissot','Tudor',
-            'Ulysse Nardin','Van Cleef','Waltham','Other',
-            ],
-        },
+    {name: 'name', type: 'string'},
+    {
+      name: 'brand',
+      title: 'Brand',
+      type: 'string',
+      options: {
+        list: [
+          'Ball',
+          'Bedat & Co',
+          'Borel',
+          'Burberry',
+          'Bulova',
+          'Bvlgari',
+          'Cartier',
+          'Casio',
+          'Christian Dior',
+          'Citizen',
+          'Corum',
+          'Cyma',
+          'Ebel',
+          'Elgin',
+          'Eterna',
+          'Fendi',
+          'Frederique Constant',
+          'Gucci',
+          'Hamilton',
+          'Hermès',
+          'Heuer',
+          'IWC',
+          'Jaeger-LeCoultre',
+          'Junghans',
+          'KUOE',
+          'Longines',
+          'Mondaine',
+          'Omega',
+          'Piaget',
+          'Rado',
+          'Revue Thommen',
+          'Rolex',
+          'Seiko',
+          'Sinn',
+          'Tag Heuer',
+          'Tissot',
+          'Tudor',
+          'Ulysse Nardin',
+          'Van Cleef',
+          'Waltham',
+          'Other',
+        ],
+      },
     },
 
     {
       name: 'slug',
       type: 'slug',
-      options: { source: 'name' },
+      options: {source: 'name'},
     },
-    
+
     {
       name: 'description',
       type: 'text',
@@ -32,17 +72,17 @@ export default {
     },
 
     {
-        name: 'gender',
-        title: 'Gender',
-        type: 'array',
-        of: [
-            {
-            type: 'string',
-            options: {
-                list: ["Men's", "Women's", 'Unisex'],
-            },
-            },
-        ],
+      name: 'gender',
+      title: 'Gender',
+      type: 'array',
+      of: [
+        {
+          type: 'string',
+          options: {
+            list: ["Men's", "Women's", 'Unisex'],
+          },
+        },
+      ],
     },
 
     {
@@ -68,7 +108,7 @@ export default {
       name: 'images',
       title: 'Product Images',
       type: 'array',
-      of: [{ type: 'image' }],
+      of: [{type: 'image'}],
       validation: (Rule) => Rule.max(30),
     },
   ],
@@ -78,7 +118,7 @@ export default {
       name: 'name',
       media: 'images.0',
     },
-    prepare({ brand, name, media }) {
+    prepare({brand, name, media}) {
       return {
         title: brand && name ? `${brand} - ${name}` : name || 'Untitled',
         media,
